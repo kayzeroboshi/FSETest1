@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(motionPin, GPIO.IN)
 time.sleep(10)
 
-BuzzerPin = 13  # GPIO pin connected to Buzzer
+BuzzerPin = 11  # GPIO pin connected to Buzzer
 
 def setup():
     """ Setup the GPIO pins for the ultrasonic sensor and buzzer """
