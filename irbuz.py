@@ -7,9 +7,7 @@ import time
 #TRIG = 11       # GPIO pin connected to Trig of Ultrasonic Sensor
 #ECHO = 12       # GPIO pin connected to Echo of Ultrasonic Sensor
 motionPin = 12
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(motionPin, GPIO.IN)
-time.sleep(10)
+
 
 BuzzerPin = 11  # GPIO pin connected to Buzzer
 
@@ -20,6 +18,9 @@ def setup():
     # Setup for ultrasonic sensor
     #GPIO.setup(motionPin, GPIO.OUT)
     #GPIO.setup(motionPin, GPIO.IN)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(motionPin, GPIO.IN)
+    time.sleep(10)
     
     # Setup for buzzer
     GPIO.setup(BuzzerPin, GPIO.OUT)
