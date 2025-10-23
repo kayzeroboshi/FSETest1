@@ -65,8 +65,8 @@ def loop():
 
 if __name__ == "__main__":
     setup()
-    try:
-        loop()
+    
+    loop()
     
         
 
