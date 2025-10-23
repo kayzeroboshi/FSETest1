@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import RPi.GPIO as GPIO
 import time
 
@@ -16,8 +18,8 @@ def setup():
     GPIO.setmode(GPIO.BOARD)
     
     # Setup for ultrasonic sensor
-    GPIO.setup(motionPin, GPIO.OUT)
-    GPIO.setup(motionPin, GPIO.IN)
+    #GPIO.setup(motionPin, GPIO.OUT)
+    #GPIO.setup(motionPin, GPIO.IN)
     
     # Setup for buzzer
     GPIO.setup(BuzzerPin, GPIO.OUT)
@@ -59,6 +61,21 @@ def beep(duration):
 
 def loop():
     """ Main loop that checks the distance and controls the buzzer """
+    
+    try:
+        while True:
+            motion = GPIO.input(motionPin)
+            print(motion)
+            time.sleep(.1)
+            if motion == 1:
+                buzzer_on()
+            elif motion == 0:
+                buzzer_off()
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        print('GPIO Good to Go')
+    
+    """
     while True:
         dis = distance()
         print(dis, 'cm')  # Print distance measurement
@@ -72,6 +89,7 @@ def loop():
             buzzer_off()  # Turn off buzzer if object is far
         
         time.sleep(0.3)
+    """
 
 def destroy():
     """ Cleanup function to reset GPIO settings """
